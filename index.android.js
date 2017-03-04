@@ -9,34 +9,47 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Navigator
 } from 'react-native';
 
-import Button from './src/components/Button';
 import Main from './src/pages/Main';
 
-export default class RNStarterKit extends Component {
-  goMain = () => {
+var _navigator;
 
+export default class RNStarterKit extends Component {
+  _renderScene (route, navigator) {
+    _navigator = navigator;
+    switch (route.id) {
+      case 'main':
+        return (
+          <Main navigator={navigator}/>
+        );
+      case 'todo-list':
+        return (
+          <View>
+            <Text>Todo List</Text>
+          </View>
+        );
+    }
+  }
+
+  configureScene(route, routeStack) {
+    return Navigator.SceneConfigs.FloatFromLeft;
   }
 
   render() {
     return (
-      <View style={styles.container}>
-        <Main></Main>
-        <Button text="Explore" onPress={() => this.goMain()}></Button>
-      </View>
+      <Navigator
+        configureScene={this.configureScene}
+        initialRoute={{ id: 'main' }}
+        renderScene={(route, navigator) => this._renderScene(route, navigator)}
+      />
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
   welcome: {
     fontSize: 20,
     textAlign: 'center',

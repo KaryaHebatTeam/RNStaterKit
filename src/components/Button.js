@@ -3,17 +3,17 @@ import {
   StyleSheet,
   View,
   Text,
-  TouchableWithoutFeedback
+  Button
 } from 'react-native';
 
 export default class Button extends Component {
   render({ onPress } = this.props) {
     return (
-      <TouchableWithoutFeedback onPress={onPress}>
+      <Button onPress={onPress}>
         <View style={styles.button}>
           <Text style={styles.text}>{this.props.text.toUpperCase()}</Text>
         </View>
-      </TouchableWithoutFeedback>
+      </Button>
     );
   }
 }
