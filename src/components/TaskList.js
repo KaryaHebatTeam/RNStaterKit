@@ -6,13 +6,12 @@ import {
 } from 'react-native';
 
 import Task from '../components/Task';
-import tasks from '../data/tasks.json';
 
 export default class TaskList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tasks: tasks
+      tasks: this.props.tasks
     };
   }
 

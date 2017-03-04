@@ -4,29 +4,49 @@ import {
   ScrollView,
   Text,
   TextInput,
+  View,
+  Button,
 } from 'react-native';
 
 import Header from '../components/Header';
 import TaskList from '../components/TaskList';
+import dataTasks from '../data/tasks.json';
 
 export default class TodoList extends Component {
   constructor(props) {
     super(props);
+    
     this.state = {
-      task: ''
+      newTask: '',
+      tasks: dataTasks,
     };
+
+    this.addNewTask = this.addNewTask.bind(this);
+  }
+
+  addNewTask() {
+    this.setState({
+      tasks: this.state.tasks.push({
+        id: this.state.tasks.length + 1,
+        task: this.state.newTask,
+      }),
+      newTask: ''
+    });
   }
 
   render() {
     return (
       <ScrollView style={styles.container}>
         <Header title="Todo List" />
-        <TextInput
-          style={styles.input}
-          onChangeText={(task) => this.setState({task})}
-          value={this.state.task}
-        />
-        <TaskList />
+        <View style={styles.form}>
+          <TextInput
+            onChangeText={(task) => this.setState({newTask: task})}
+            value={this.state.newTask}
+            style={styles.input}
+          /> 
+          <Button title="Add" style={styles.button} onPress={this.addNewTask}></Button>
+        </View>
+        <TaskList tasks={this.state.tasks} />
       </ScrollView>
     );
   }
@@ -37,7 +57,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#eee'
   },
-  input: {
-
+  form: {
+    flex: 1,
   },
 });
