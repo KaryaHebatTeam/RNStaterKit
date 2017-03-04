@@ -9,31 +9,16 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Navigator
 } from 'react-native';
 
-import Button from './src/components/Button';
+import TodoList from './src/pages/TodoList';
 
 export default class RNStarterKit extends Component {
-  goMain = () => {
-
-  }
-
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
-        <Button text="Explore" onPress={() => this.goMain()}></Button>
-      </View>
+      <TodoList/>
     );
   }
 }
