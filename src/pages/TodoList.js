@@ -15,7 +15,7 @@ import dataTasks from '../data/tasks.json';
 export default class TodoList extends Component {
   constructor(props) {
     super(props);
-    
+
     this.state = {
       newTask: '',
       tasks: dataTasks,
@@ -25,11 +25,16 @@ export default class TodoList extends Component {
   }
 
   addNewTask() {
+    let tasks = this.state.tasks;
+    let id    = this.state.tasks.length + 1;
+
+    tasks.push({
+      id: id,
+      task: this.state.newTask,
+    });
+
     this.setState({
-      tasks: this.state.tasks.push({
-        id: this.state.tasks.length + 1,
-        task: this.state.newTask,
-      }),
+      tasks: tasks,
       newTask: ''
     });
   }
