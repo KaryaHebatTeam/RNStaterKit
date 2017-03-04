@@ -13,14 +13,7 @@ import {
   Navigator
 } from 'react-native';
 
-<<<<<<< HEAD
 import TodoList from './src/pages/TodoList';
-
-export default class RNStarterKit extends Component {
-  render() {
-    return (
-      <TodoList/>
-=======
 import Main from './src/pages/Main';
 
 var _navigator;
@@ -35,25 +28,22 @@ export default class RNStarterKit extends Component {
         );
       case 'todo-list':
         return (
-          <View>
-            <Text>Todo List</Text>
-          </View>
+          <TodoList navigator={navigator} />
         );
     }
   }
 
   configureScene(route, routeStack) {
-    return Navigator.SceneConfigs.FloatFromLeft;
+    return Navigator.SceneConfigs.FloatFromRight;
   }
 
   render() {
     return (
       <Navigator
         configureScene={this.configureScene}
-        initialRoute={{ id: 'main' }}
+        initialRoute={{ id: 'todo-list' }}
         renderScene={(route, navigator) => this._renderScene(route, navigator)}
       />
->>>>>>> 84866a4e29bdbf9f5e52426b77816979f8a766ba
     );
   }
 }

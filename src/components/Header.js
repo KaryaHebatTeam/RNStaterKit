@@ -17,12 +17,14 @@ export default class Header extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    height: 64,
-    backgroundColor: '#2980b9'
+    height: 48,
+    backgroundColor: '#2980b9',
+    justifyContent: 'center', 
+    alignItems: 'center',
   },
   title: {
     color: '#FFFFFF',
     textAlign: 'center',
-    textAlignVertical: 'bottom',
+    fontSize: 18,
   }
 });
