@@ -21,14 +21,7 @@ export default class Button extends Component {
 const styles = StyleSheet.create({
   button: {
     backgroundColor: '#2980b9',
-    borderRadius: 5,
-    shadowOffset: {
-      width: 1,
-      height: 1,
-    },
-    shadowRadius: 5,
-    shadowOpacity: 1,
-    shadowColor: 'black',
+    borderRadius: 20,
     paddingHorizontal: 30,
     paddingTop: 10,
     paddingBottom: 12,
